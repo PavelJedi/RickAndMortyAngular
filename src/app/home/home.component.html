@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container">
+  <div class="logo">
+    <div class="img-holder">
+      <img src="../../assets/logo.png" alt="Rick And Morty Logo">
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-6">
+      <input type="search" (input)="onSearchInputChange($any($event.target).value)" class="form-control form-control-lg"
+        placeholder="Search for a character...">
+    </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-3 d-flex" *ngFor="let character of filteredCharacters?.slice(0,8)">
+      <div class="card mb-5">
+        <img [src]="character.image" class="card-img-top" alt="Character Image">
+        <div class="card-body">
+          <a [routerLink]="['/details', character.id]">{{ character.name }}</a>
+          <p class="card-text">{{ character.gender }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
